@@ -1,0 +1,104 @@
+1)
+def binary_to_decimal(binary):
+    decimal = 0
+    power = len(binary) - 1
+    for digit in binary:
+        decimal += int(digit) * (2 ** power)
+        power -= 1
+    return decimal
+
+# Example usage:
+binary_number = "1010"
+decimal_number = binary_to_decimal(binary_number)
+print("Decimal equivalent of", binary_number, "is", decimal_number)
+
+2)
+def filter_words(words):
+    filtered_words = ()
+    for word in words:
+        if 'a' in word and 'b' in word and len(word) > 4:
+            filtered_words += (word,)
+    return filtered_words
+
+# Example usage:
+word_tuple = ("apple", "banana", "grape", "orange", "strawberry", "blueberry", "kiwi", "peach", "apricot", "blackberry", "plum", "cherry", "melon", "mango", "papaya")
+filtered_tuple = filter_words(word_tuple)
+print(filtered_tuple)
+
+3)
+import random
+
+# Generate random tuple with 50 elements
+random_tuple = tuple(random.randint(1, 100) for _ in range(50))
+
+# Initialize empty tuples
+even_tuple = ()
+odd_tuple = ()
+divisible_by_3_tuple = ()
+
+# Separate elements into different tuples using loops
+for num in random_tuple:
+    if num % 2 == 0:
+        even_tuple += (num,)
+    if num % 2 != 0:
+        odd_tuple += (num,)
+    if num % 3 == 0:
+        divisible_by_3_tuple += (num,)
+
+# Save tuples to file
+with open("output.txt", "w") as file:
+    for tup in [even_tuple, odd_tuple, divisible_by_3_tuple]:
+        file.write(','.join(map(str, tup)) + '\n')
+
+
+4)
+def fib(months):
+    if months == 0 or months == 1:
+        return 1
+    else:
+        return fib(months - 1) + fib(months - 2)
+
+# Test the function
+months = int(input("Enter the number of months: "))
+rabbits = fib(months)
+print(f"After {months} months, there are {rabbits} rabbits.")
+
+5)
+import random
+
+def calculate_operation():
+    operation = random.randint(0, 2)
+    print("Random number generated:", operation)
+    
+    if operation == 0:
+        # Multiplication with for loop
+        num1 = int(input("Enter the first number: "))
+        num2 = int(input("Enter the second number: "))
+        result = 0
+        for _ in range(num2):
+            result += num1
+        print("Multiplication using for loop:", result)
+    
+    elif operation == 1:
+        # Factorial with while loop
+        num = int(input("Enter a number to calculate its factorial: "))
+        factorial = 1
+        while num > 0:
+            factorial *= num
+            num -= 1
+        print("Factorial using while loop:", factorial)
+    
+    elif operation == 2:
+        # Multiplication recursively
+        def multiply(x, y):
+            if y == 0:
+                return 0
+            return x + multiply(x, y - 1)
+
+        num1 = int(input("Enter the first number: "))
+        num2 = int(input("Enter the second number: "))
+        result = multiply(num1, num2)
+        print("Multiplication using recursion:", result)
+
+calculate_operation()
+
